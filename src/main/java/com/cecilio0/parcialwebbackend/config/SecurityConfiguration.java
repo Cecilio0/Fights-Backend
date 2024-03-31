@@ -39,7 +39,7 @@ public class SecurityConfiguration {
 										"/configuration/security",
 										"/webjars/**")
 								.permitAll()
-								.requestMatchers(
+								.requestMatchers( // Routes for requests that are only possible for administrators
 										"towers/update/**",
 										"towers/save",
 										"heroes/update/**",
