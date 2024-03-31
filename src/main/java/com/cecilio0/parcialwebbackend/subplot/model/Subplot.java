@@ -3,6 +3,7 @@ package com.cecilio0.parcialwebbackend.subplot.model;
 import com.cecilio0.parcialwebbackend.fighter.model.Fighter;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,6 +24,7 @@ public class Subplot {
 	private Long id_subplot;
 	
 	@Column(columnDefinition = "TEXT")
+	@NotNull
 	private String info;
 	
 	@ManyToMany(mappedBy = "subplots")

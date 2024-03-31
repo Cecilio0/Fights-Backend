@@ -6,6 +6,7 @@ import com.cecilio0.parcialwebbackend.subplot.model.Subplot;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,38 +29,47 @@ public class Fighter {
 	private Long id_fighter;
 	
 	@Column(unique = true)
+	@NotNull
 	private String name;
 	
 	@Column(columnDefinition = "TEXT") // used to set data type to TEXT
+	@NotNull
 	private String biography;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_base_class")
 	@JsonManagedReference // This annotation means that this relationship can only be seen on this side
+	@NotNull
 	private BaseClass baseClass;
 	
 	@Column
 	@Range(min = 0L, max = 30L)
+	@NotNull
 	private Integer strength;
 	
 	@Column
 	@Range(min = 0L, max = 30L)
+	@NotNull
 	private Integer dexterity;
 	
 	@Column
 	@Range(min = 0L, max = 30L)
+	@NotNull
 	private Integer constitution;
 	
 	@Column
 	@Range(min = 0L, max = 30L)
+	@NotNull
 	private Integer intelligence;
 	
 	@Column
 	@Range(min = 0L, max = 30L)
+	@NotNull
 	private Integer wisdom;
 	
 	@Column
 	@Range(min = 0L, max = 30L)
+	@NotNull
 	private Integer charisma;
 	
 	@ManyToMany(cascade = { CascadeType.ALL })
