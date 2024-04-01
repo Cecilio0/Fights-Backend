@@ -2,6 +2,7 @@ package com.cecilio0.parcialwebbackend.fighter.model;
 
 import com.cecilio0.parcialwebbackend.ability.model.Ability;
 import com.cecilio0.parcialwebbackend.baseclass.model.BaseClass;
+import com.cecilio0.parcialwebbackend.fight.model.Fight;
 import com.cecilio0.parcialwebbackend.subplot.model.Subplot;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -89,4 +90,12 @@ public class Fighter {
 	)
 	@JsonManagedReference
 	private List<Subplot> subplots;
+	
+	@OneToMany(mappedBy = "winner", cascade = CascadeType.ALL)
+	@JsonBackReference
+	private List<Fight> fightsWon;
+	
+	@OneToMany(mappedBy = "loser", cascade = CascadeType.ALL)
+	@JsonBackReference
+	private List<Fight> fightsLost;
 }
