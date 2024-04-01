@@ -2,6 +2,7 @@ package com.cecilio0.parcialwebbackend.baseclass.model;
 
 import com.cecilio0.parcialwebbackend.fighter.model.Fighter;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -36,6 +37,6 @@ public class BaseClass {
 	private String secondaryAttribute;
 	
 	@OneToMany(mappedBy = "baseClass", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JsonBackReference(value = "fighter_class") // This annotation means that this relationship can not be seen on this side
+	@JsonIgnore
 	List<Fighter> fighters;
 }

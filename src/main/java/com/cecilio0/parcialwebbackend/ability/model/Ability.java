@@ -2,6 +2,7 @@ package com.cecilio0.parcialwebbackend.ability.model;
 
 import com.cecilio0.parcialwebbackend.fighter.model.Fighter;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -33,6 +34,6 @@ public class Ability {
 	private Integer power;
 	
 	@ManyToMany(mappedBy = "abilities")
-	@JsonBackReference(value = "fighter_ability")
+	@JsonIgnore
 	private List<Fighter> fighters;
 }

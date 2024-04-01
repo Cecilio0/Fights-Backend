@@ -32,13 +32,11 @@ public class Turn {
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_fight")
-	@JsonBackReference(value = "fight_turns")
 	@NotNull
 	private Fight fight;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_attacker")
-	@JsonBackReference(value = "turn_attacker")
 	@NotNull
 	private Fighter fighter;
 }

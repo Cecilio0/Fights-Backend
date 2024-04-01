@@ -24,19 +24,16 @@ public class Fight {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id_fight;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "id_winner")
-	@JsonBackReference(value = "fight_winner")
 	@NotNull
 	private Fighter winner;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "id_loser")
-	@JsonBackReference(value = "fight_loser")
 	@NotNull
 	private Fighter loser;
 	
 	@OneToMany(mappedBy = "fight", cascade = CascadeType.ALL)
-	@JsonManagedReference(value = "fight_turns")
 	private List<Turn> turns;
 }
