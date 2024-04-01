@@ -48,7 +48,7 @@ public class JwtService {
 		return Keys.hmacShaKeyFor(keyBytes);
 	}
 	
-	public String  generateToken(
+	public String generateToken(
 			UserDetails userDetails
 	) {
 		return generateToken(new HashMap<>(), userDetails);

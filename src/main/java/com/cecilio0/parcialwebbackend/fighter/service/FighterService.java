@@ -26,6 +26,11 @@ public class FighterService implements IFighterService{
 	}
 	
 	@Override
+	public Fighter findByName(String name) {
+		return fighterRepository.findByName(name).orElseThrow(() -> new NotFoundException("The name provided does not belong to a fighter"));
+	}
+	
+	@Override
 	public List<String> findFighterNames() {
 		return fighterRepository.findFighterNames();
 	}

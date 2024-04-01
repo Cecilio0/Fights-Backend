@@ -7,5 +7,7 @@ import java.util.List;
 public interface IFighterService {
 	List<Fighter> findAll();
 	Fighter findById(Long id);
+	Fighter findByName(String name);
+	
 	List<String> findFighterNames();
 }
