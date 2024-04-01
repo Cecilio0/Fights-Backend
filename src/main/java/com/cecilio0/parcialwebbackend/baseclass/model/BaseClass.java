@@ -36,6 +36,6 @@ public class BaseClass {
 	private String secondaryAttribute;
 	
 	@OneToMany(mappedBy = "baseClass", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JsonBackReference // This annotation means that this relationship can not be seen on this side
+	@JsonBackReference(value = "fighter_class") // This annotation means that this relationship can not be seen on this side
 	List<Fighter> fighters;
 }

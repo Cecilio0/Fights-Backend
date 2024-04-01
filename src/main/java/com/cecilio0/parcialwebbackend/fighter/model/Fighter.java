@@ -4,6 +4,7 @@ import com.cecilio0.parcialwebbackend.ability.model.Ability;
 import com.cecilio0.parcialwebbackend.baseclass.model.BaseClass;
 import com.cecilio0.parcialwebbackend.fight.model.Fight;
 import com.cecilio0.parcialwebbackend.subplot.model.Subplot;
+import com.cecilio0.parcialwebbackend.turn.model.Turn;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -39,7 +40,7 @@ public class Fighter {
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_base_class")
-	@JsonManagedReference // This annotation means that this relationship can only be seen on this side
+	@JsonManagedReference(value = "fighter_class") // This annotation means that this relationship can only be seen on this side
 	@NotNull
 	private BaseClass baseClass;
 	
@@ -79,7 +80,7 @@ public class Fighter {
 			joinColumns = { @JoinColumn(name = "id_fighter") },
 			inverseJoinColumns = { @JoinColumn(name = "id_ability") }
 	)
-	@JsonManagedReference
+	@JsonManagedReference(value = "fighter_ability")
 	private List<Ability> abilities;
 	
 	@ManyToMany(cascade = { CascadeType.ALL })
@@ -88,14 +89,18 @@ public class Fighter {
 			joinColumns = { @JoinColumn(name = "id_fighter") },
 			inverseJoinColumns = { @JoinColumn(name = "id_subplot") }
 	)
-	@JsonManagedReference
+	@JsonManagedReference(value = "fighter_subplot")
 	private List<Subplot> subplots;
 	
 	@OneToMany(mappedBy = "winner", cascade = CascadeType.ALL)
-	@JsonBackReference
+	@JsonManagedReference(value = "fight_winner")
 	private List<Fight> fightsWon;
 	
 	@OneToMany(mappedBy = "loser", cascade = CascadeType.ALL)
-	@JsonBackReference
+	@JsonManagedReference(value = "fight_loser")
 	private List<Fight> fightsLost;
+	
+	@OneToMany(mappedBy = "fighter", cascade = CascadeType.ALL)
+	@JsonManagedReference(value = "turn_attacker")
+	private List<Turn> fighterTurns;
 }

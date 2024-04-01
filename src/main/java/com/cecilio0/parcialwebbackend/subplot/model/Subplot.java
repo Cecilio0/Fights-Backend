@@ -28,6 +28,6 @@ public class Subplot {
 	private String info;
 	
 	@ManyToMany(mappedBy = "subplots")
-	@JsonBackReference
+	@JsonBackReference(value = "fighter_subplot")
 	private List<Fighter> fighters;
 }

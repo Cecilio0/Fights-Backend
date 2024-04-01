@@ -1,6 +1,7 @@
 package com.cecilio0.parcialwebbackend.fight.model;
 
 import com.cecilio0.parcialwebbackend.fighter.model.Fighter;
+import com.cecilio0.parcialwebbackend.turn.model.Turn;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -9,6 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @Builder
@@ -23,14 +26,17 @@ public class Fight {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_winner")
-	@JsonManagedReference
+	@JsonBackReference(value = "fight_winner")
 	@NotNull
 	private Fighter winner;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_loser")
-	@JsonManagedReference
+	@JsonBackReference(value = "fight_loser")
 	@NotNull
 	private Fighter loser;
 	
+	@OneToMany(mappedBy = "fight", cascade = CascadeType.ALL)
+	@JsonManagedReference(value = "fight_turns")
+	private List<Turn> turns;
 }

@@ -39,16 +39,16 @@ public class SecurityConfiguration {
 										"/configuration/security",
 										"/webjars/**")
 								.permitAll()
-								.requestMatchers( // Routes for requests that are only possible for administrators
-										"towers/update/**",
-										"towers/save",
-										"heroes/update/**",
-										"heroes/save",
-										"bloons/update/**",
-										"bloons/save",
-										"maps/update/**",
-										"maps/save")
-								.hasRole("ADMIN")
+//								.requestMatchers( // Routes for requests that are only possible for administrators
+//										"towers/update/**",
+//										"towers/save",
+//										"heroes/update/**",
+//										"heroes/save",
+//										"bloons/update/**",
+//										"bloons/save",
+//										"maps/update/**",
+//										"maps/save")
+//								.hasRole("ADMIN")
 								.anyRequest()
 								.authenticated())
 				.sessionManagement((session) ->

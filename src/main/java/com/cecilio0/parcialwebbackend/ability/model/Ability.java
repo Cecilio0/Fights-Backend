@@ -33,6 +33,6 @@ public class Ability {
 	private Integer power;
 	
 	@ManyToMany(mappedBy = "abilities")
-	@JsonBackReference
+	@JsonBackReference(value = "fighter_ability")
 	private List<Fighter> fighters;
 }
