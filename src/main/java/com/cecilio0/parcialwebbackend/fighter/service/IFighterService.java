@@ -9,4 +9,5 @@ public interface IFighterService {
 	Fighter findById(Long id);
 	Fighter findByName(String name);
 	List<String> findFighterNames();
+	Fighter save(Fighter fighter);
 }
