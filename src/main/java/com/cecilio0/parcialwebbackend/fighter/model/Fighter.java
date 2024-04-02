@@ -45,6 +45,11 @@ public class Fighter {
 	private BaseClass baseClass;
 	
 	@Column
+	@Range(min = 1L)
+	@NotNull
+	private Integer hp;
+	
+	@Column
 	@Range(min = 0L, max = 30L)
 	@NotNull
 	private Integer strength;
