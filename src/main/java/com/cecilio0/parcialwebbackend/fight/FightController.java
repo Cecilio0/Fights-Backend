@@ -20,18 +20,14 @@ public class FightController {
 	private final IFightService fightService;
 	
 	@GetMapping("/find")
-	public ResponseEntity<List<FightResponse>> findAll(){
-		return ResponseEntity.ok(fightService.findAll());
+	public ResponseEntity<List<FightResponse>> findAll(@RequestParam(name = "fighterName", required = false) String name){
+		
+		return ResponseEntity.ok((name == null)? fightService.findAll(): fightService.findByFighterName(name));
 	}
 	
 	@GetMapping("/find/id/{id}")
 	public ResponseEntity<FightResponse> findById(@PathVariable Long id){
 		return ResponseEntity.ok(fightService.findById(id));
-	}
-	
-	@GetMapping("/find/fighter")
-	public ResponseEntity<List<FightResponse>> findByFighterName(@RequestParam(name = "name", required = true) String name){
-		return ResponseEntity.ok(fightService.findByFighterName(name));
 	}
 	
 	@PostMapping("/save")
