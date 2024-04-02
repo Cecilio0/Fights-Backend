@@ -35,7 +35,7 @@ public class FightController {
 	}
 	
 	@PostMapping("/save")
-	public ResponseEntity<Fight> save(@RequestBody Fight request){
-		return new ResponseEntity<Fight>(fightService.save(request), HttpStatus.CREATED);
+	public ResponseEntity<FightResponse> save(@RequestBody Fight request){
+		return new ResponseEntity<>(fightService.save(request), HttpStatus.CREATED);
 	}
 }

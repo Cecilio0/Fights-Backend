@@ -90,15 +90,15 @@ public class Fighter {
 	)
 	private List<Subplot> subplots;
 	
-	@OneToMany(mappedBy = "winner", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "winner", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Fight> fightsWon;
 	
-	@OneToMany(mappedBy = "loser", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "loser", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Fight> fightsLost;
 	
-	@OneToMany(mappedBy = "fighter", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "fighter", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Turn> fighterTurns;
 }

@@ -10,5 +10,5 @@ public interface IFightService {
 	List<FightResponse> findAll();
 	FightResponse findById(Long id);
 	List<FightResponse> findByFighterName(String name);
-	Fight save(Fight request);
+	FightResponse save(Fight request);
 }

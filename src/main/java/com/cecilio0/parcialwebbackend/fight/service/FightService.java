@@ -43,7 +43,7 @@ public class FightService implements IFightService{
 	}
 	
 	@Override
-	public Fight save(Fight request) {
-		return fightRepository.save(request);
+	public FightResponse save(Fight request) {
+		return FightResponse.parseFight(fightRepository.save(request));
 	}
 }

@@ -34,6 +34,9 @@ public class Fight {
 	@NotNull
 	private Fighter loser;
 	
-	@OneToMany(mappedBy = "fight", cascade = CascadeType.ALL)
+//	@OneToMany(mappedBy = "fight", cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_fight")
 	private List<Turn> turns;
+	
 }
