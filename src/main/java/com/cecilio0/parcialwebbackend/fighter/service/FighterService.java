@@ -5,6 +5,8 @@ import com.cecilio0.parcialwebbackend.baseclass.model.BaseClass;
 import com.cecilio0.parcialwebbackend.exception.NotFoundException;
 import com.cecilio0.parcialwebbackend.fighter.IFighterRepository;
 import com.cecilio0.parcialwebbackend.fighter.model.Fighter;
+import com.cecilio0.parcialwebbackend.fighter.model.request.FighterPutRequest;
+import com.cecilio0.parcialwebbackend.subplot.model.Subplot;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,26 +42,27 @@ public class FighterService implements IFighterService{
 	
 	@Override
 	public Fighter save(Fighter request) {
-//		return Fighter.builder()
-//				.name(request.getName())
-//				.biography(request.getBiography())
-//				.baseClass(BaseClass.builder()
-//						.id_base_class(request.getBaseClass().getId_base_class())
-//						.build()
-//				)
-//				.hp(request.getHp())
-//				.strength(request.getStrength())
-//				.dexterity(request.getDexterity())
-//				.constitution(request.getConstitution())
-//				.intelligence(request.getIntelligence())
-//				.wisdom(request.getWisdom())
-//				.charisma(request.getCharisma())
-//				.abilities(request.getAbilities().stream()
-//						.map(ability -> Ability.builder().id_ability(ability.getId_ability()).build())
-//						.collect(Collectors.toList()))
-//				.build();
-		
 		return fighterRepository.save(request);
+	}
+	
+	@Override
+	public Fighter update(FighterPutRequest request, Long id) {
+		Fighter response = findById(id);
+		
+		response.setName(request.getName());
+		response.setBiography(request.getBiography());
+		response.setBaseClass(request.getBaseClass());
+		response.setHp(request.getHp());
+		response.setStrength(request.getStrength());
+		response.setDexterity(request.getDexterity());
+		response.setConstitution(request.getConstitution());
+		response.setIntelligence(request.getIntelligence());
+		response.setWisdom(request.getWisdom());
+		response.setCharisma(request.getCharisma());
+		response.setAbilities(request.getAbilities());
+		response.setSubplots(request.getSubplots());
+		
+		return fighterRepository.save(response);
 	}
 }
 

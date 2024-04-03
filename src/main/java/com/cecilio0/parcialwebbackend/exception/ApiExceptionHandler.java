@@ -71,6 +71,18 @@ public class ApiExceptionHandler {
 		return new ResponseEntity<>(apiException, badRequest);
 	}
 	
+	@ExceptionHandler(value = {jakarta.validation.ConstraintViolationException.class})
+	public ResponseEntity<Object> handleJakartaConstraintViolationException(jakarta.validation.ConstraintViolationException e){
+		String message = e.getMessage();
+		
+		ApiException apiException = new ApiException(
+				message,
+				badRequest
+		);
+		
+		return new ResponseEntity<>(apiException, badRequest);
+	}
+	
 	// todo add handler for jwt exceptions
 	// check out https://medium.com/@mypascal2000/custom-handling-of-invalid-jwt-in-spring-boot-f66e60d59230
 }

@@ -33,7 +33,7 @@ public class AbilityService implements IAbilityService{
 	
 	@Override
 	public Ability update(AbilityPutRequest request, Long id) {
-		Ability response = ablilityRepository.findById(id).orElseThrow(() -> new NotFoundException("The id provided does not belong to an ability"));
+		Ability response = findById(id);
 		
 		response.setName(request.getName());
 		response.setPower(request.getPower());

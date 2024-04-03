@@ -1,6 +1,7 @@
 package com.cecilio0.parcialwebbackend.fighter;
 
 import com.cecilio0.parcialwebbackend.fighter.model.Fighter;
+import com.cecilio0.parcialwebbackend.fighter.model.request.FighterPutRequest;
 import com.cecilio0.parcialwebbackend.fighter.service.IFighterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,10 @@ public class FighterController {
 	@PostMapping("/save")
 	public ResponseEntity<Fighter> save(@RequestBody Fighter fighter) {
 		return new ResponseEntity<>(fighterService.save(fighter), HttpStatus.CREATED);
+	}
+	
+	@PutMapping("/update/{id}")
+	public ResponseEntity<Fighter> update(@RequestBody FighterPutRequest request, @PathVariable Long id){
+		return ResponseEntity.ok(fighterService.update(request, id));
 	}
 }

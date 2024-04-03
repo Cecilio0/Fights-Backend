@@ -39,7 +39,7 @@ public class Fighter {
 	@NotNull
 	private String biography;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH) // REFRESH detaches the entity and allows updates without changing child entity
 	@JoinColumn(name = "id_base_class")
 	@NotNull
 	private BaseClass baseClass;
@@ -79,7 +79,7 @@ public class Fighter {
 	@NotNull
 	private Integer charisma;
 	
-	@ManyToMany(cascade = { CascadeType.MERGE })
+	@ManyToMany(cascade = { CascadeType.REFRESH })
 	@JoinTable(
 			name = "fighters_abilities",
 			joinColumns = { @JoinColumn(name = "id_fighter") },
@@ -87,7 +87,7 @@ public class Fighter {
 	)
 	private List<Ability> abilities;
 	
-	@ManyToMany(cascade = { CascadeType.MERGE })
+	@ManyToMany(cascade = { CascadeType.REFRESH })
 	@JoinTable(
 			name = "fighters_subplots",
 			joinColumns = { @JoinColumn(name = "id_fighter") },
