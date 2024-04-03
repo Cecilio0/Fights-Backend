@@ -29,7 +29,7 @@ public class Ability {
 	private String name;
 	
 	@Column
-	@Range(min = 0L, max = 30L)
+	@Range(min = 0L, max = 100L)
 	@NotNull
 	private Integer power;
 	

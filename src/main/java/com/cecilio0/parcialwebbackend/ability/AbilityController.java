@@ -1,6 +1,7 @@
 package com.cecilio0.parcialwebbackend.ability;
 
 import com.cecilio0.parcialwebbackend.ability.model.Ability;
+import com.cecilio0.parcialwebbackend.ability.model.request.AbilityPutRequest;
 import com.cecilio0.parcialwebbackend.ability.service.IAbilityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,4 +33,8 @@ public class AbilityController {
 		return new ResponseEntity<>(abilityService.save(request), HttpStatus.CREATED);
 	}
 	
+	@PutMapping("/update/{id}")
+	public ResponseEntity<Ability> update(@RequestBody AbilityPutRequest request, @PathVariable Long id){
+		return ResponseEntity.ok(abilityService.update(request, id));
+	}
 }
