@@ -1,6 +1,8 @@
 package com.cecilio0.parcialwebbackend.exception;
 
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
+import org.hibernate.exception.ConstraintViolationException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -55,6 +57,18 @@ public class ApiExceptionHandler {
 		);
 		
 		return new ResponseEntity<>(apiException, forbidden);
+	}
+	
+	@ExceptionHandler(value = {ConstraintViolationException.class})
+	public ResponseEntity<Object> handleConstraintViolationException(ConstraintViolationException e){
+		String message = e.getErrorMessage();
+		
+		ApiException apiException = new ApiException(
+				message,
+				badRequest
+		);
+		
+		return new ResponseEntity<>(apiException, badRequest);
 	}
 	
 	// todo add handler for jwt exceptions

@@ -2,7 +2,6 @@ package com.cecilio0.parcialwebbackend.fight;
 
 import com.cecilio0.parcialwebbackend.fight.model.Fight;
 import com.cecilio0.parcialwebbackend.fight.model.request.FightResponse;
-import com.cecilio0.parcialwebbackend.fight.model.request.FightSaveRequest;
 import com.cecilio0.parcialwebbackend.fight.service.IFightService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
